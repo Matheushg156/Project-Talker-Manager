@@ -3,8 +3,8 @@ const rescue = require('express-rescue');
 
 const fileName = './talker.json';
 
-const getTalkersById = rescue(async (_req, res) => {
-  const { id } = _req.params;
+const getTalkersById = rescue(async (req, res) => {
+  const { id } = req.params;
   const talkers = await fs.readFile(fileName, 'utf8');
   const filteredTalkers = JSON.parse(talkers).find((talker) => talker.id === parseInt(id, 10));
   if (!filteredTalkers) {
