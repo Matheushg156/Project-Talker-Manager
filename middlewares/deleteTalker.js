@@ -3,7 +3,7 @@ const rescue = require('express-rescue');
 
 const fileName = './talker.json';
 
-const editTalker = rescue(async (req, res) => {
+const deleteTalker = rescue(async (req, res) => {
   const { id } = req.params;
   const talkers = JSON.parse(await fs.readFile(fileName, 'utf8'));
   const filteredTalkers = talkers.filter((talker) => talker.id !== Number(id));
@@ -11,4 +11,4 @@ const editTalker = rescue(async (req, res) => {
   return res.status(204).end();
 });
 
-module.exports = editTalker;
+module.exports = deleteTalker;
